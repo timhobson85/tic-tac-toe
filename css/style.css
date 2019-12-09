@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  display: flex;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#wrapper {
+  background-color: lightpink;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+
+
+#gameboard {
+
+  display: grid;
+  grid-template-columns: repeat(3, 200px);
+
+
+}
+
+#gameboard > div {
+  background-color: aqua;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+}
+
+.squares {
+
+  border: 1px solid magenta;
+
+}
