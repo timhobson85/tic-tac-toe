@@ -26,8 +26,15 @@ body {
 
 }
 
+.rightBorderLine {
+  border-right: 1px solid magenta;
+}
 
-[id = '11'] {
+.bottomBorderLine {
+  border-bottom: 1px solid magenta;
+}
+
+/* [id ='11'] {
   border-right: 1px solid magenta;
   border-bottom: 1px solid magenta;
 }
@@ -54,7 +61,7 @@ body {
 }
 [id ='23'] {
   border-bottom: 1px solid magenta;
-}
+} */
 
 
 #gameboard > div {
