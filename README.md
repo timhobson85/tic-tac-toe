@@ -1,7 +1,7 @@
 tic-tac-toe README
 created 09/12/19
 
-
+Seconds to learn, minutes to master!
 
 ---Project #0: The Game---
 

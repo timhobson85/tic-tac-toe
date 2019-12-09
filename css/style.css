@@ -8,6 +8,7 @@ body {
 }
 
 #wrapper {
+  /* background-color: black; */
   background-color: lightpink;
   display: flex;
   justify-content: center;
@@ -25,20 +26,51 @@ body {
 
 }
 
+
+[id = '11'] {
+  border-right: 1px solid magenta;
+  border-bottom: 1px solid magenta;
+}
+[id ='12'] {
+  border-right: 1px solid magenta;
+  border-bottom: 1px solid magenta;
+}
+[id ='21'] {
+  border-bottom: 1px solid magenta;
+  border-right: 1px solid magenta;
+}
+[id ='22'] {
+  border-bottom: 1px solid magenta;
+  border-right: 1px solid magenta;
+}
+[id ='31'] {
+  border-right: 1px solid magenta;
+}
+[id ='32'] {
+  border-right: 1px solid magenta;
+}
+[id ='13'] {
+  border-bottom: 1px solid magenta;
+}
+[id ='23'] {
+  border-bottom: 1px solid magenta;
+}
+
+
 #gameboard > div {
+  /* background-color: darkgrey; */
   background-color: aqua;
   width: 200px;
   height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
 
 }
 
 .squares {
 
-  border: 1px solid magenta;
+  /* border: 1px solid magenta;   */
 
 }
 

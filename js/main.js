@@ -1,47 +1,69 @@
 // creating empty global arrays
-let $tL = null
-let $tM = null
-let $tR = null
-let $mL = null
-let $mM = null
-let $mR = null
-let $bL = null
-let $bM = null
-let $bR = null
+let $11 = null
+let $12 = null
+let $13 = null
+let $21 = null
+let $22 = null
+let $23 = null
+let $31 = null
+let $32 = null
+let $33 = null
 let square = null
 let player = null
 let turnCount = null
 let matchCount = null
+let player1Turns = []
+let player2Turns = []
+let currentPlayer = null
 
 $(document).ready(function () { // run after document is loaded
 
-  $tL = $('#tL')
-  $tM = $('#tM')
-  $tR = $('#tR')
-  $mL = $('#mL')
-  $mM = $('#mM')
-  $mR = $('#mR')
-  $bL = $('#bL')
-  $bM = $('#bM')
-  $bR = $('#bR')
+  $11 = $('#11')
+  $12 = $('#12')
+  $13 = $('#13')
+  $21 = $('#21')
+  $22 = $('#22')
+  $23 = $('#23')
+  $31 = $('#31')
+  $32 = $('#32')
+  $33 = $('#33')
 
+  //  this click function logs the players number (1 or 2) to the board object
+  // $('.squares').on('click', function (event) { // this places playernumber in the corresponing object value.
+  //   if (turnCount % 2 === 0) { // turn 1 = player1, turn 2 = player2, etc...)
+  //     player = 1
+  //     $(this).css( `backgroundColor`, `yellow`)
+  //   } else {
+  //     player = 2
+  //     $(this).css( `backgroundColor`, `fuchsia`)
+  //     }
+  //   turnCount++ // adds 1 to turnCount for each click
+  //   console.log(turnCount); // logging to check
+  //   square = $(this).attr('id'); // records the ID of the square, and uses that to change the board object value
+  //   gameObject[square] = player
+  //   if (turnCount >= 5) { // minimum number of turns to get a win, so doesn't search til now.
+  //     loopWinsObjects(); // runs the win function
+  //   }
+  // }); // end of onclick
 
-
-
-  $('.squares').on('click', function (event) { // this places X in the corresponing object value.
-    if (turnCount % 2 === 0) {
+  // this click function will log the players turn into an array
+  $('.squares').on('click', function (event) { // this places player number in the corresponing object value.
+    if (turnCount % 2 === 0) { // turn 1 = player1, turn 2 = player2, etc...)
       player = 1
+      currentPlayer = player1Turns
       $(this).css( `backgroundColor`, `yellow`)
     } else {
       player = 2
+      currentPlayer = player2Turns
       $(this).css( `backgroundColor`, `fuchsia`)
       }
-    turnCount++
-    console.log(turnCount);
-    square = $(this).attr('id');
-    gameObject[square] = player
-    if (turnCount >= 5) {
-      loopWins();
+    turnCount++ // adds 1 to turnCount for each click
+    console.log(`turn number`, turnCount, `for player`, player); // logging to check
+    square = $(this).attr('id'); // records the ID of the square
+    currentPlayer.push( square ); // pushes the square ID into the array
+    console.log(currentPlayer); // logging to check
+    if (turnCount >= 5) { // minimum number of turns to get a win, so doesn't search til now.
+      loopWinsArray(); // runs the win function
     }
   }); // end of onclick
 
@@ -54,173 +76,195 @@ $('#startButton').on('click', function () {
     }
   }
   turnCount = null
+  player1Turns = []
+  player2Turns = [] // put in reset function
   console.log(turnCount);
   $(this).html( 'reset' );
   $('.squares').css('backgroundColor', 'aqua'); // turn this into a reset gameboard function
   console.log(`startGame`);
 
   // startGame();
+  //square.onclick.run function
+  //firstclick player 1
+  //second click player 2
+  //repeat til win or draw
 
-}) // end of startbutton onclick
-
-
+  }); // end of startbutton onclick
 
 }); // end of document ready
 
 const gameObject = {
 
-  tL: null, tM: null, tR: null,
-  mL: null, mM: null, mR: null,
-  bL: null, bM: null, bR: null
+  11: null, 12: null, 13: null,
+  21: null, 22: null, 23: null,
+  31: null, 32: null, 33: null
 
-}; // object for empty board
-
-// how to create solve cases
-// objects or arrays
-// start with X and O or use 1 and 2 or even 1 & 0, that way I can change them to anything later on.
-//
-
-
-//square.onclick.run function
-//firstclick player 1
-//second click player 2
-//repeat til win or draw
+};
 
 //need to stop entering value if already clicked
-//need to figure out at least one win condition for now. lets do top 2.
+//have got it working for player 1
 
-const winConditions = [
+const winConditionsArray = [
 
-  {
-    tL: 0001, tM: 0001, tR: 0001,
+  [ 11, 12, 13 ],
 
-        },
+  [ 21, 22, 23 ],
 
-  {
+  [ 31, 32, 33 ],
 
-    mL: 0001, mM: 0001, mR: 0001,
-        },
+  [ 11, 21, 31 ],
 
-  {
+  [ 12, 22, 32 ],
 
+  [ 13, 23, 33 ],
 
-    bL: 0001, bM: 0001, bR: 0001
-  },
+  [ 11, 22, 33 ],
 
-  {
-
-
-        },
-
-  {
-    tL: 0001,
-    mL: 0001,
-    bL: 0001,    },
-
-  {
-     tM: 0001,
-     mM: 0001,
-     bM: 0001,   },
-
-  {
-      tR: 0001,
-      mR: 0001,
-      bR: 0001
-  },
-
-  {
-    tL: 0001,
-     mM: 0001,
-      bR: 0001
-  },
-
-  {
-      tR: 0001,
-     mM: 0001,
-    bL: 0001,    },
+  [ 13, 22, 31 ]
 
 ] // end of winConditions array.
 
-const loopWins = function () {
+const winConditionsObjectsArray = [
+
+  { 11: true, 12: true, 13: true },
+
+  { 21: true, 22: true, 23: true },
+
+  { 31: true, 32: true, 33: true },
+
+  { 11: true, 21: true, 31: true },
+
+  { 12: true, 22: true, 32: true },
+
+  { 13: true, 23: true, 33: true },
+
+  { 11: true, 22: true, 33: true },
+
+  { 13: true, 22: true, 31: true }
+
+] // end of winConditions array.
+
+
+
+// loop winconditionarrys
+// loop into first wincontition
+// store 3 win positions into variables
+// loop through the currentplayer to see if they match.
+
+const loopWinsArray = function () {
+  for (var i = 0; i < winConditionsArray.length; i++) { // loops into the main array of all win conditions
+    // console.log(winConditionsArray[i])
+    // console.log(i);
+    matchCount = 0
+    for (var x = 0; x < winConditionsArray[x].length; x++) { // loops through the current array in the array
+      // console.log(winConditionsArray[i][x])
+      // console.log(x);
+      checkForMatch = winConditionsArray[i][x]
+      // console.log(`does square match`, checkForMatch);
+      for (var y = 0; y < currentPlayer.length; y++) {
+        // console.log(currentPlayer[y])
+        if (checkForMatch == currentPlayer[y]) {
+          matchCount++
+          // console.log(matchCount);
+          if (matchCount === 3) {
+            console.log( `WIN!`)
+            return (`winner is player`, player)
+          }
+        // } else {
+          // return false
+        }
+      }
+    }
+  }
+}
+
+//
+// const loopWinsArray = function () {
+//   // for (var i = 0; i < winConditionsArray.length; i++) {
+//   //   console.log(winConditionsArray[i])
+//   //   for (var i = 0; i < winConditionsArray[i].length; i++) {
+//   //     console.log(winConditionsArray[i][i])
+//   //   }
+//   // }
+//   storeWinVariables();
+// } // end of loopWinsArray
+
+
+const loopWinsObjects = function () { // can we take player as input here?
   for (var i = 0; i < winConditions.length; i++) {
     matchCount = 0
     for (var key in winConditions[i]) {
-        if (winConditions[i][key] == gameObject[key] ) {
-          console.log(`match!`);
-          matchCount++
+      if (winConditions[i][key] == gameObject[key] ) {
+        console.log(`match!`);
+        matchCount++
 
-          if (matchCount === 3) {
+        if (matchCount === 3) {
 
-            return console.log(`you win!`);
+          return console.log(`you win!`);
 
-          } else if (turnCount === 9) {
+        } else if (turnCount === 9) {
 
-            return console.log(`draw`);
+          return console.log(`draw`);
 
-          }
         }
-
       }
+    }
   }
-} // end of loopwins
+} // end of loopWinsObjects
 
 //so run loop of their turn, their player number = true in the arrays so that it can match against the solve condition object.
 
 
-// const winConditions = [
-//
-//   {
-//     tL: 0001, tM: 0001, tR: 0001,
-//     mL: null, mM: null, mR: null,
-//     bL: null, bM: null, bR: null
-//   },
-//
-//   {
-//     tL: null, tM: null, tR: null,
-//     mL: 0001, mM: 0001, mR: 0001,
-//     bL: null, bM: null, bR: null
-//   },
-//
-//   {
-//     tL: null, tM: null, tR: null,
-//     mL: null, mM: null, mR: null,
-//     bL: 0001, bM: 0001, bR: 0001
-//   },
-//
-//   {
-//     tL: null, tM: null, tR: null,
-//     mL: null, mM: null, mR: null,
-//     bL: null, bM: null, bR: null
-//   },
-//
-//   {
-//     tL: 0001, tM: null, tR: null,
-//     mL: 0001, mM: null, mR: null,
-//     bL: 0001, bM: null, bR: null
-//   },
-//
-//   {
-//     tL: null, tM: 0001, tR: null,
-//     mL: null, mM: 0001, mR: null,
-//     bL: null, bM: 0001, bR: null
-//   },
-//
-//   {
-//     tL: null, tM: null, tR: 0001,
-//     mL: null, mM: null, mR: 0001,
-//     bL: null, bM: null, bR: 0001
-//   },
-//
-//   {
-//     tL: 0001, tM: null, tR: null,
-//     mL: null, mM: 0001, mR: null,
-//     bL: null, bM: null, bR: 0001
-//   },
-//
-//   {
-//     tL: null, tM: null, tR: 0001,
-//     mL: null, mM: 0001, mR: null,
-//     bL: 0001, bM: null, bR: null
-//   },
-//
-// ] // end of winConditions array.
+// create array with selected turns
+//logic for a win if board is
+// 11, 12, 13
+// 21, 22, 23
+// 31, 32, 33
+
+// if 1, plus two (plus one plus two)
+// if 2, minus one plus one
+// if 3, mins two (minus one minus 2)
+
+// so for 22 we would get
+
+// 11, 33... 12, 32... 13, 31... 21, 23...
+
+// 31 is
+// 11, 21... 32, 33... 22, 13...
+
+testObject1 = {
+  key1: 1,
+  key2: 2,
+  key3: 3
+}
+
+testObject2 = {
+  key1: 1,
+  key2: 2,
+  key3: 3
+}
+
+const compareTests = function ( a, b ) {
+
+  // create an aray of property names
+  let aProperties = Object.getOwnPropertyNames(a);
+  console.log(aProperties);
+  let bProperties = Object.getOwnPropertyNames(b);
+  console.log(bProperties);
+  // if number of properties are different, obj are not equiv ( i don't want this )
+  if (aProperties.length != bProperties.length ) {
+    return false
+  }
+
+  for (var i = 0; i < aProperties.length; i++) {
+    var propertyName = aProperties[i];
+
+    // if values of same property are not equal, objects are not equivalent
+    if (a[propertyName] !== b[propertyName]) {
+      return false
+    }
+  }
+
+  // if we made it this far, object are considered equivalent
+  return true
+};
