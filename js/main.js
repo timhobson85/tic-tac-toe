@@ -55,22 +55,22 @@ $('#startButton').on('click', function () {
 }); // end of startbutton onclick
 //////////////////////////// ( `x` === ((test1 && test2) && (test2 && test3)) )
 const winCheck = function () {
-  if (playerMark === (gameBoard[0] === gameBoard[1] && gameBoard[1] === gameBoard[2])) {
-    return console.log(`win!`);
-  } else if (playerMark === ((gameBoard[3] && gameBoard[4]) && (gameBoard[4] && gameBoard[5]))) {
-    return console.log(`win!`)
-  } else if (playerMark === ((gameBoard[6] && gameBoard[7]) && (gameBoard[7] && gameBoard[8]))) {
-    return console.log(`win!`)
-  } else if (playerMark === ((gameBoard[0] && gameBoard[3]) && (gameBoard[3] && gameBoard[6]))) {
-    return console.log(`win!`)
-  } else if (playerMark === ((gameBoard[1] && gameBoard[4]) && (gameBoard[4] && gameBoard[7]))) {
-    return console.log(`win!`)
-  } else if (playerMark === ((gameBoard[2] && gameBoard[5]) && (gameBoard[5] && gameBoard[8]))) {
-    return console.log(`win!`)
-  } else if (playerMark === ((gameBoard[0] && gameBoard[4]) && (gameBoard[4] && gameBoard[8]))) {
-    return console.log(`win!`)
-  } else if (playerMark === ((gameBoard[2] && gameBoard[4]) && (gameBoard[4] && gameBoard[6]))) {
-    return console.log(`win!`)
+  if ( (playerMark === gameBoard[0]) && ((gameBoard[0] === gameBoard[1]) && (gameBoard[1] === gameBoard[2]))) {
+    return console.log(`player ${player} has won!`)
+  } else if ((playerMark && gameBoard[3]) && ((gameBoard[3] === gameBoard[4]) && (gameBoard[4] === gameBoard[5]))) {
+    return console.log(`player ${player} has won!`)
+  } else if ((playerMark && gameBoard[6]) && ((gameBoard[6] === gameBoard[7]) && (gameBoard[7] === gameBoard[8]))) {
+    return console.log(`player ${player} has won!`)
+  } else if ((playerMark && gameBoard[0]) && ((gameBoard[0] === gameBoard[3]) && (gameBoard[3] === gameBoard[6]))) {
+    return console.log(`player ${player} has won!`)
+  } else if ((playerMark && gameBoard[1]) && ((gameBoard[1] === gameBoard[4]) && (gameBoard[4] === gameBoard[7]))) {
+    return console.log(`player ${player} has won!`)
+  } else if ((playerMark && gameBoard[2]) && ((gameBoard[2] === gameBoard[5]) && (gameBoard[5] === gameBoard[8]))) {
+    return console.log(`player ${player} has won!`)
+  } else if ((playerMark && gameBoard[0]) && ((gameBoard[0] === gameBoard[4]) && (gameBoard[4] === gameBoard[8]))) {
+    return console.log(`player ${player} has won!`)
+  } else if ((playerMark && gameBoard[2]) && ((gameBoard[2] === gameBoard[4]) && (gameBoard[4] === gameBoard[6]))) {
+    return console.log(`player ${player} has won!`)
   }
 }; // end of winCheck
 
