@@ -1,76 +1,138 @@
-const gameBoard = [ null, null, null, null, null, null, null, null, null ]
+let gameBoard = [ null, null, null, null, null, null, null, null, null ]
 let turnCount = null
 let player = null
 let playerMark = null
 let playerColor = null
+let gameResult = null
+let gameOver = null
+let $scoreBoard = null
 
-const whosTurn = function () { // pick who's turn it is
+const resetBoard = function () { // can turn this into a function to create scalable board later
+
+  $('.squares').css('backgroundColor', 'aqua');
+  gameOver = false
+  turnCount = 0
+  gameBoard = [ null, null, null, null, null, null, null, null, null ]
+
+}
+
+const setPlayer = function () { // pick who's turn it is
   if (turnCount % 2 === 0) {  // turn 1 = player1, turn 2 = player2, etc...)
     player = 1
     playerMark = `X`
-    playerColor = `fuchsia`
+    playerColor = `lime`
   } else {
     player = 2
     playerMark = `O`
-    playerColor = `yellow`
+    playerColor = `fuchsia`
   }
   turnCount++
 }
 
-const checkBoxIfFree = function () {
+const checkBoxUsed = function () {
   if (gameBoard[boxID] === null) {
-    return true
+    return false
   } else {
     console.log(`box is taken, pick again`)
-    return false
+    return true
+  }
+}
+
+const endGame = function () {
+  if (gameResult === `win`) {
+    console.log(`the game has finished with a ${gameResult}`);
+    console.log(`congratulations to player ${player} who played as ${playerMark}`);
+    scoreBoard()
+    return gameOver = true
+  } else if (gameResult === `draw`) {
+    console.log(`the game has concluded in a ${gameResult}`);
+    scoreBoard()
+    return gameOver = true
   }
 }
 
 $('.squares').on('click', function () { // this places player number in the corresponing object value.
+  if (gameOver === true) {
+    return
+  } else
   boxID = $(this).attr('id'); // records the ID of the square
   console.log(boxID);
-    if ( checkBoxIfFree( boxID ) ) {
-      whosTurn();
-      $(this).css( `backgroundColor`, playerColor )
+    if ( checkBoxUsed( boxID ) ) { // try make this opposite, so if true will send back to middle, or continue with turn.
+      return false
+    } else {
+    setPlayer();
+    console.log(gameResult);
+    $(this).css( `backgroundColor`, playerColor )
     gameBoard[boxID] = playerMark; // pushes the playerMark( X or O ) into the array
     if (turnCount >= 5) { // minimum number of turns to get a win, so doesn't search til now.
       winCheck(); // runs the win function
-    }
-    if (turnCount === 9) {
-        console.log(`DRAW!`);
+      endGame();
     }
   }
 }); // end of onclick
 
+const scoreBoard = function () {
+
+  $scoreBoard = $('<div class="scoreBoard">'); // could just make this show an already hidden div
+
+  $scoreBoard.css({
+
+    position: 'absolute',
+    backgroundColor: `white`,
+    width: 250 + 'px',
+    height: 125 + 'px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: `15%`,
+    backgroundColor: `yellow`,
+    border: `2px solid goldenrod`,
+
+
+  }); // end of blob div properties
+
+  $scoreBoard.html(`the game has finished with a ${gameResult}`)
+
+  $('#wrapper').append( $scoreBoard ); // creates the blob
+
+}
+
 $('#startButton').on('click', function () {
-  turnCount = null
-  player1Turns = []
-  player2Turns = [] // put in reset function
-  console.log(turnCount);
+  $scoreBoard.remove()
+  resetBoard()
   $(this).html( 'reset' );
   $('.squares').css('backgroundColor', 'aqua'); // turn this into a reset gameboard function
-  console.log(`startGame`);
-
-
+  console.log(`startGame`)
 }); // end of startbutton onclick
-//////////////////////////// ( `x` === ((test1 && test2) && (test2 && test3)) )
+
+//send to a function that displays the winner
 const winCheck = function () {
-  if ( (playerMark === gameBoard[0]) && ((gameBoard[0] === gameBoard[1]) && (gameBoard[1] === gameBoard[2]))) {
-    return console.log(`player ${player} has won!`)
-  } else if ((playerMark && gameBoard[3]) && ((gameBoard[3] === gameBoard[4]) && (gameBoard[4] === gameBoard[5]))) {
-    return console.log(`player ${player} has won!`)
-  } else if ((playerMark && gameBoard[6]) && ((gameBoard[6] === gameBoard[7]) && (gameBoard[7] === gameBoard[8]))) {
-    return console.log(`player ${player} has won!`)
-  } else if ((playerMark && gameBoard[0]) && ((gameBoard[0] === gameBoard[3]) && (gameBoard[3] === gameBoard[6]))) {
-    return console.log(`player ${player} has won!`)
-  } else if ((playerMark && gameBoard[1]) && ((gameBoard[1] === gameBoard[4]) && (gameBoard[4] === gameBoard[7]))) {
-    return console.log(`player ${player} has won!`)
-  } else if ((playerMark && gameBoard[2]) && ((gameBoard[2] === gameBoard[5]) && (gameBoard[5] === gameBoard[8]))) {
-    return console.log(`player ${player} has won!`)
-  } else if ((playerMark && gameBoard[0]) && ((gameBoard[0] === gameBoard[4]) && (gameBoard[4] === gameBoard[8]))) {
-    return console.log(`player ${player} has won!`)
-  } else if ((playerMark && gameBoard[2]) && ((gameBoard[2] === gameBoard[4]) && (gameBoard[4] === gameBoard[6]))) {
-    return console.log(`player ${player} has won!`)
+  if (turnCount === 9) {
+      return gameResult = `draw`
+  } if ( (playerMark === gameBoard[0]) && ((gameBoard[0] === gameBoard[1]) && (gameBoard[1] === gameBoard[2]))) {
+    console.log(`win1`);
+    return gameResult = `win`
+  } else if ((playerMark && gameBoard[3]) && ((gameBoard[3] === gameBoard[4]) && (gameBoard[3] === gameBoard[5]))) {
+    console.log(`win2`);
+    return gameResult = `win`
+  } else if ((playerMark && gameBoard[6]) && ((gameBoard[6] === gameBoard[7]) && (gameBoard[6] === gameBoard[8]))) {
+    console.log(`win3`);
+    return gameResult = `win`
+  } else if ((playerMark && gameBoard[0]) && ((gameBoard[0] === gameBoard[3]) && (gameBoard[0] === gameBoard[6]))) {
+    console.log(`win4`);
+    return gameResult = `win`
+  } else if ((playerMark && gameBoard[1]) && ((gameBoard[1] === gameBoard[4]) && (gameBoard[1] === gameBoard[7]))) {
+    console.log(`win5`);
+    return gameResult = `win`
+  } else if ((playerMark && gameBoard[2]) && ((gameBoard[2] === gameBoard[5]) && (gameBoard[2] === gameBoard[8]))) {
+    console.log(`win6`);
+    return gameResult = `win`
+  } else if ((playerMark && gameBoard[0]) && ((gameBoard[0] === gameBoard[4]) && (gameBoard[0] === gameBoard[8]))) {
+    console.log(`win7`);
+    return gameResult = `win`
+  } else if ((playerMark && gameBoard[2]) && ((gameBoard[2] === gameBoard[4]) && (gameBoard[2] === gameBoard[6]))) {
+    console.log(`win8`);
+    return gameResult = `win`
   }
 }; // end of winCheck
 

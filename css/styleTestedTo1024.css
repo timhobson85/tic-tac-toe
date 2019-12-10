@@ -8,25 +8,24 @@ body {
 }
 
 #wrapper {
-  /* background-color: black; */
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: yellow;
+  background-color: lightgoldenrodyellow;
   width: 100%;
 }
 
 #gameboard {
   display: grid;
-  grid-template-columns: repeat(3, 200px);
+  grid-template-columns: repeat(32, 18.75px);
 }
 
 .rightBorderLine {
-  border-right: 1px solid deeppink;
+  /* border-right: 1px solid deeppink; */
 }
 
 .bottomBorderLine {
-  border-bottom: 1px solid deeppink;
+  /* border-bottom: 1px solid deeppink; */
 }
 
 #gameboard > div {
@@ -35,12 +34,12 @@ body {
   align-items: center;
   justify-content: center;
   background-color: aqua;
-  width: 200px;
-  height: 200px;
+  width: 18.75px;
+  height: 18.75px;
 }
 
 .squares {
-  /* border: 1px solid magenta;   */
+  border: 1px solid magenta;
 }
 
 #content {
