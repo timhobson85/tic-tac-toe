@@ -6,12 +6,18 @@ let playerColor = null
 let gameResult = null
 let gameOver = null
 let $scoreBoard = null
+let $addWin = null
+let winCount = null
+let winListItem = null
+const $ul = $('ul#wins')
 
 const resetBoard = function () { // can turn this into a function to create scalable board later
 
-  $('.squares').css('backgroundColor', 'aqua');
+  $('.squares').css('backgroundColor', 'lightsteelblue');
+  winListItem = null
   gameOver = false
   turnCount = 0
+  gameResult = null
   gameBoard = [ null, null, null, null, null, null, null, null, null ]
 
 }
@@ -20,11 +26,11 @@ const setPlayer = function () { // pick who's turn it is
   if (turnCount % 2 === 0) {  // turn 1 = player1, turn 2 = player2, etc...)
     player = 1
     playerMark = `X`
-    playerColor = `lime`
+    playerColor = `lavender`
   } else {
     player = 2
     playerMark = `O`
-    playerColor = `fuchsia`
+    playerColor = `lightgreen`
   }
   turnCount++
 }
@@ -42,12 +48,16 @@ const endGame = function () {
   if (gameResult === `win`) {
     console.log(`the game has finished with a ${gameResult}`);
     console.log(`congratulations to player ${player} who played as ${playerMark}`);
+    winListItem = `Player ${player}-${playerMark} / ${gameResult}`
     scoreBoard()
     return gameOver = true
   } else if (gameResult === `draw`) {
     console.log(`the game has concluded in a ${gameResult}`);
+    winListItem = `${gameResult}`
     scoreBoard()
     return gameOver = true
+  } else {
+    return false
   }
 }
 
@@ -92,8 +102,21 @@ const scoreBoard = function () {
   }); // end of blob div properties
 
   $scoreBoard.html(`the game has finished with a ${gameResult}`)
+  winCounter();
+  
 
   $('#wrapper').append( $scoreBoard ); // creates the blob
+
+}
+
+const winCounter = function () {
+  //create div on FIRST win
+  // take player & player mark(as it may change)
+  // amend it to a list item to make it scroll down the page
+  // $addWin = $('<li>')
+  // $addWin.html(`hello`)
+  // $addWin.append($(`ul`))
+  $ul.html($ul.html() + `<li>${winListItem}</li>`)
 
 }
 
