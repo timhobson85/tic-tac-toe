@@ -16,14 +16,9 @@ body {
   width: 100%;
 }
 
-
-
 #gameboard {
-
   display: grid;
   grid-template-columns: repeat(3, 200px);
-
-
 }
 
 .rightBorderLine {
@@ -34,36 +29,6 @@ body {
   border-bottom: 1px solid magenta;
 }
 
-/* [id ='11'] {
-  border-right: 1px solid magenta;
-  border-bottom: 1px solid magenta;
-}
-[id ='12'] {
-  border-right: 1px solid magenta;
-  border-bottom: 1px solid magenta;
-}
-[id ='21'] {
-  border-bottom: 1px solid magenta;
-  border-right: 1px solid magenta;
-}
-[id ='22'] {
-  border-bottom: 1px solid magenta;
-  border-right: 1px solid magenta;
-}
-[id ='31'] {
-  border-right: 1px solid magenta;
-}
-[id ='32'] {
-  border-right: 1px solid magenta;
-}
-[id ='13'] {
-  border-bottom: 1px solid magenta;
-}
-[id ='23'] {
-  border-bottom: 1px solid magenta;
-} */
-
-
 #gameboard > div {
   /* background-color: darkgrey; */
   background-color: aqua;
@@ -72,13 +37,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 
 .squares {
-
   /* border: 1px solid magenta;   */
-
 }
 
 #content {

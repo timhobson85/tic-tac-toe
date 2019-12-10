@@ -1,4 +1,9 @@
-
+//**************************************************************************
+//**************************************************************************
+//*****************got game working, too many arrays and looping************
+//*********************starting again to make more concise******************
+//**************************************************************************
+//**************************************************************************
 
 
 // creating empty global arrays
@@ -226,27 +231,27 @@ const loopWinsArray = function () {
 // } // end of loopWinsArray
 
 
-const loopWinsObjects = function () { // can we take player as input here?
-  for (var i = 0; i < winConditions.length; i++) {
-    matchCount = 0
-    for (var key in winConditions[i]) {
-      if (winConditions[i][key] == gameObject[key] ) {
-        console.log(`match!`);
-        matchCount++
-
-        if (matchCount === 3) {
-
-          return console.log(`you win!`);
-
-        } else if (turnCount === 9) {
-
-          return console.log(`draw`);
-
-        }
-      }
-    }
-  }
-} // end of loopWinsObjects
+// const loopWinsObjects = function () { // can we take player as input here?
+//   for (var i = 0; i < winConditions.length; i++) {
+//     matchCount = 0
+//     for (var key in winConditions[i]) {
+//       if (winConditions[i][key] == gameObject[key] ) {
+//         console.log(`match!`);
+//         matchCount++
+//
+//         if (matchCount === 3) {
+//
+//           return console.log(`you win!`);
+//
+//         } else if (turnCount === 9) {
+//
+//           return console.log(`draw`);
+//
+//         }
+//       }
+//     }
+//   }
+// } // end of loopWinsObjects
 
 //so run loop of their turn, their player number = true in the arrays so that it can match against the solve condition object.
 
@@ -268,39 +273,39 @@ const loopWinsObjects = function () { // can we take player as input here?
 // 31 is
 // 11, 21... 32, 33... 22, 13...
 
-testObject1 = {
-  key1: 1,
-  key2: 2,
-  key3: 3
-}
-
-testObject2 = {
-  key1: 1,
-  key2: 2,
-  key3: 3
-}
-
-const compareTests = function ( a, b ) {
-
-  // create an aray of property names
-  let aProperties = Object.getOwnPropertyNames(a);
-  console.log(aProperties);
-  let bProperties = Object.getOwnPropertyNames(b);
-  console.log(bProperties);
-  // if number of properties are different, obj are not equiv ( i don't want this )
-  if (aProperties.length != bProperties.length ) {
-    return false
-  }
-
-  for (var i = 0; i < aProperties.length; i++) {
-    var propertyName = aProperties[i];
-
-    // if values of same property are not equal, objects are not equivalent
-    if (a[propertyName] !== b[propertyName]) {
-      return false
-    }
-  }
-
-  // if we made it this far, object are considered equivalent
-  return true
-};
+// testObject1 = {
+//   key1: 1,
+//   key2: 2,
+//   key3: 3
+// }
+//
+// testObject2 = {
+//   key1: 1,
+//   key2: 2,
+//   key3: 3
+// }
+//
+// const compareTests = function ( a, b ) {
+//
+//   // create an aray of property names
+//   let aProperties = Object.getOwnPropertyNames(a);
+//   console.log(aProperties);
+//   let bProperties = Object.getOwnPropertyNames(b);
+//   console.log(bProperties);
+//   // if number of properties are different, obj are not equiv ( i don't want this )
+//   if (aProperties.length != bProperties.length ) {
+//     return false
+//   }
+//
+//   for (var i = 0; i < aProperties.length; i++) {
+//     var propertyName = aProperties[i];
+//
+//     // if values of same property are not equal, objects are not equivalent
+//     if (a[propertyName] !== b[propertyName]) {
+//       return false
+//     }
+//   }
+//
+//   // if we made it this far, object are considered equivalent
+//   return true
+// };
