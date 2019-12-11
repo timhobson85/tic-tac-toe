@@ -103,7 +103,7 @@ const scoreBoard = function () {
 
   $scoreBoard.html(`the game has finished with a ${gameResult}`)
   winCounter();
-  
+
 
   $('#wrapper').append( $scoreBoard ); // creates the blob
 
@@ -158,6 +158,53 @@ const winCheck = function () {
     return gameResult = `win`
   }
 }; // end of winCheck
+
+const oldwinConditionsArray = [
+
+  [ 0, 1, 2 ],
+
+  [ 3, 4, 5 ],
+
+  [ 6, 7, 8 ],
+
+  [ 0, 3, 6 ],
+
+  [ 1, 4, 7 ],
+
+  [ 2, 5, 8 ],
+
+  [ 0, 4, 8 ],
+
+  [ 2, 4, 6 ]
+
+]
+
+const oldloopWinsArray = function () {
+  for (var i = 0; i < oldwinConditionsArray.length; i++) { // loops into the main array of all win conditions
+    // console.log(oldwinConditionsArray[i])
+    // console.log(i);
+    oldmatchCount = 0
+    for (var x = 0; x < oldwinConditionsArray[x].length; x++) { // loops through the current array in the array
+      // console.log(oldwinConditionsArray[i][x])
+      // console.log(x);
+      oldcheckForMatch = oldwinConditionsArray[i][x]
+      // console.log(`does square match`, checkForMatch);
+      for (var y = 0; y < currentPlayer.length; y++) {
+        // console.log(currentPlayer[y])
+        if (oldcheckForMatch == oldcurrentPlayer[y]) {
+          oldmatchCount++
+          // console.log(matchCount);
+          if (oldmatchCount === 3) {
+            console.log( `WIN!`)
+            return (`winner is player`, oldplayer)
+          }
+        // } else {         
+          // return false
+        }
+      }
+    }
+  }
+}
 
 //******************** trying to make scalable solves **************************************
 
