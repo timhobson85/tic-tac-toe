@@ -6,12 +6,22 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <!-- <div id="blankscreen">
+    <div id="loadBox">
+      <div id="cross">
+        <div class="cross" id="c1"></div>
+        <div class="cross" id="c2"></div>
+      </div>
+      <div id="loadButton">
+      </div>
+    </div>
+  </div> -->
   <div class="lines" id="centerlineV"></div>
   <div class="lines" id="centerlineH"></div>
   <div id="wrapper">
     <header>
       <nav>
-        <div id="headingText">tic-tac-toe</div>
+        <h1 id="headingText">TICTACTOE X O</h1>
         <div></div>
       </nav>
     </header>
@@ -34,10 +44,24 @@
         <div class="squares" id="8">  </div>
       </div>
       <div id="rightSide">
-        <div id="enterNames"></div>
-        <div id="pickMark"></div>
+        <div id="pickMark">
+          <div class="dropdown">
+            <button class="dropbtn">choosesymbol</button>
+              <div class="dropdown-content">
+                <div id="1">pizza</div>
+                <div id="2"></div>
+                <div id="3"></div>
+            </div>
+          </div>
+        </div>
         <div id="buttonBox">
-          <div id="startButton">start</div>
+          <div id="getName"><div id="enterNames"><form>
+          <label>ENTERNAME</label>
+          <input id="enterPlayer1Name" type="text" placeholder="Player 1"></input>
+          <input id="enterPlayer2Name" type="text" placeholder="Player 2"></input>
+          <input id='submitName' type="button" value="enter"></input>
+        </form></div></div>
+          <div id="resetButton">reset</div>
         </div>
       </div>
     </div>
@@ -47,8 +71,8 @@
       </div>
     </footer>
   </div>
+  <div class="scoreBoard"><h3 id="winName">Congratulations!</h3><p id="winText">You won the game with X!</p><p id="drawText"></p><button id="scoreBoardOk">OK!</button></div>
   <script type="text/javascript" src='js/jquery.js'></script>
   <script type="text/javascript" src='js/main.js'></script>
-  <div class="scoreBoard"><h3 id="winName">Congratulations!</h3><p id="winText">You won the game with X!</p><p id="drawText"></p><button id="scoreBoardOk">OK!</button></div>
 </body>
 </html>

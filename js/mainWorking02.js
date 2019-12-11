@@ -2,13 +2,12 @@ let gameBoard = [ null, null, null, null, null, null, null, null, null ]
 let turnCount = null
 let player = null
 let playerMark = null
+let playerColor = null
 let gameResult = null
 let gameOver = null
 let $addWin = null
+let winCount = null
 let winListItem = null
-let playerIMG = null
-let player1Name = null
-let player2Name = null
 const $ul = $('ul#wins')
 const $winText = $('#winText')
 const $winName = $('#winName')
@@ -16,42 +15,32 @@ const $scoreBoard = $('.scoreBoard')
 
 $('#loadButton').on('click', function () {
   $(this).fadeOut(function () {
-      $('#blankscreen').delay(1000).fadeOut();
+        $('#blankscreen').delay(1000).fadeOut();
+    })
   })
-})
 
-$('#submitName').on('click', function () { // create a check for no input?
-  player1Name = ( $('#enterPlayer1Name').val() );
-  player2Name = ( $('#enterPlayer2Name').val() );
-  console.log(player1Name);
-  console.log(player2Name);
-  $('#getName').hide()
-} );
-
-
-
-
-const resetBoard = function () {
+const resetBoard = function () { // can turn this into a function to create scalable board later
   $('.squares').html('')
   winListItem = null
-  gameOver = false
+  let gameOver = false
   turnCount = 0
   gameResult = null
   gameBoard = [ null, null, null, null, null, null, null, null, null ]
+
 }
 
-const setPlayer= function () { // use object for players and change this
-  if (turnCount % 2 === 0) {
-    player = player1Name
+const setPlayer = function () { // pick who's turn it is
+  if (turnCount % 2 === 0) {  // turn 1 = player1, turn 2 = player2, etc...)
+    player = 1
     playerMark = `X`
-    playerIMG = "X"
+    playerColor = `lavender`
   } else {
-    player = player2Name
-    playerIMG = "<img src= images/1.png>"
+    player = 2
     playerMark = `O`
+    playerColor = `lightgreen`
   }
   turnCount++
-} //create arrau for playerdetails
+}
 
 const checkBoxUsed = function () {
   if (gameBoard[boxID] === null) {
@@ -64,10 +53,13 @@ const checkBoxUsed = function () {
 
 const endGame = function () {
   if (gameResult === `win`) {
-    winListItem = `${player}-${gameResult}-${playerMark}`
+    console.log(`the game has finished with a ${gameResult}`);
+    console.log(`congratulations to player ${player} who played as ${playerMark}`);
+    winListItem = `Player ${player}-${playerMark} / ${gameResult}`
     scoreBoard()
     return gameOver = true
   } else if (gameResult === `draw`) {
+    console.log(`the game has concluded in a ${gameResult}`);
     winListItem = `${gameResult}`
     scoreBoard()
     return gameOver = true
@@ -76,49 +68,69 @@ const endGame = function () {
   }
 }
 
-const placeMark = function () {
-  $(`#${boxID}`).html(`${playerIMG}`)
-  gameBoard[boxID] = playerMark; // pushes the playerMark( X or O ) into the array
-}
-
 $('.squares').on('click', function () { // this places player number in the corresponing object value.
-  if (gameOver) {
+  if (gameOver === true) {
     return
   } else
   boxID = $(this).attr('id'); // records the ID of the square
+  console.log(boxID);
     if ( checkBoxUsed( boxID ) ) { // try make this opposite, so if true will send back to middle, or continue with turn.
       return false
     } else {
     setPlayer();
-    placeMark();
-    winCheck();
-    endGame();
+    console.log(gameResult);
+    // $(this).css( `backgroundColor`, playerColor )
+    $(this).html(playerMark)
+    gameBoard[boxID] = playerMark; // pushes the playerMark( X or O ) into the array
+    if (turnCount >= 5) { // minimum number of turns to get a win, so doesn't search til now.
+      winCheck(); // runs the win function
+      endGame();
+    }
   }
 }); // end of onclick
 
 const scoreBoard = function () {
-  $winName.html(`Congratulations ${player}!`)
+
+  // $scoreBoard = $('<div class="scoreBoard">'); // could just make this show an already hidden div
+
+  // $scoreBoard.css({
+  // }); // end of blob div properties
+
+  // $scoreBoard.html(`Congratulations Player ${player}! \n You won the game playing as ${playerMark}`)
+
+  $winName.html(`Congratulations Player ${player}!`)
   $winText.html(`You won the game playing as ${playerMark}`)
-  $('.scoreBoard').css('visibility', 'visible')
+  $('.scoreBoard').css('visibility', 'visible') // creates the blob
   $('#scoreBoardOk').on('click', function () {
+    console.log(`hello`);
     $('.scoreBoard').css('visibility', 'hidden')
+
   })
   winCounter();
+
 }
 
 const winCounter = function () {
+  //create div on FIRST win
+  // take player & player mark(as it may change)
+  // amend it to a list item to make it scroll down the page
+  // $addWin = $('<li>')
+  // $addWin.html(`hello`)
+  // $addWin.append($(`ul`))
   $ul.html(`<li>${winListItem}</li>` + $ul.html())
 }
 
-$('#resetButton').on('click', function () {
+$('#startButton').on('click', function () {
   $('.scoreBoard').css('visibility', 'hidden')
   resetBoard()
-}); // end of resetbutton onclick
+  $(this).html( 'reset' );
+  $('.squares').css('backgroundColor', '#fcfcfc'); // turn this into a reset gameboard function
+  console.log(`startGame`)
+}); // end of startbutton onclick
 
+//send to a function that displays the winner
 const winCheck = function () {
-  if (turnCount < 5) { // minimum number of turns to get a win, so doesn't search til now.
-    return
-  } if (turnCount === 9) {
+  if (turnCount === 9) {
       return gameResult = `draw`
   } if ( (playerMark === gameBoard[0]) && ((gameBoard[0] === gameBoard[1]) && (gameBoard[1] === gameBoard[2]))) {
     console.log(`win1`);

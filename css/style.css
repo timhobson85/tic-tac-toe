@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat|Orbitron&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Fredoka+One|Orbitron&display=swap');
 /* font-family: 'Montserrat', sans-serif; */
 
 body {
@@ -9,8 +9,8 @@ body {
 }
 
 #gameboard > div {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 175px'
+  font-family: 'Fredoka One', sans-serif;
+  font-size: 175px;
 }
 
 * {
@@ -18,7 +18,7 @@ body {
 }
 
 h2 {
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 20px;
   height: fit-content;
   width: fit-content;
@@ -134,7 +134,7 @@ li {
   height: 450px;
 }
 
-#startButton {
+#resetButton {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -157,8 +157,9 @@ li {
 }
 
 #headingText {
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 100px;
+  font-style: strong;
   height: fit-content;
   width: fit-content;
 }
@@ -192,10 +193,130 @@ footer {
 
 h3 {
   font-size: 50px;
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   margin: 25px;
 }
 
 winText {
   /* margin: 0; */
 }
+
+#scoreBoardOk {
+  width: 50px;
+  height: 20px;
+  background-color: lightgrey;
+}
+
+#getName {
+  display:flex;
+  flex-flow:column;
+  height:min-contents;
+  background-color:lightgrey;
+  inline-size:min-content;
+}
+
+#enterNames {
+  text-align:center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  margin: 0;
+}
+
+#goButton {
+  width:100%;
+}
+
+form {
+  margin: 0;
+}
+
+#loadBox {
+  position:absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: whitesmoke;
+  width: 500px;
+  height: 300px;
+  box-shadow: 10px 10px 4px 0px #00000011;
+}
+
+#loadButton {
+  width: 53px;
+  height: 53px;
+  border-radius: 50%;
+  background-color: black;
+  position:absolute;
+}
+
+/* loadButton:hover {
+  display:none
+}; */
+
+#blankscreen {
+  background-color: #e3e3e3;
+  position:absolute;
+  width:100vw;
+  height:100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#cross {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+#c1, #c2 {
+  background-color: black;
+  height: 50px;
+  width: 10px;
+  position: absolute;
+
+}
+#c1 {
+  transform: rotate(-45deg);
+
+}
+#c2 {
+  transform: rotate(45deg);
+}
+
+/* FOR DROP BOX */
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content div {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content div:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
