@@ -5,15 +5,18 @@ let playerMark = null
 let playerColor = null
 let gameResult = null
 let gameOver = null
-let $scoreBoard = null
 let $addWin = null
 let winCount = null
 let winListItem = null
 const $ul = $('ul#wins')
+const $winText = $('#winText')
+const $winName = $('#winName')
+const $scoreBoard = $('.scoreBoard')
 
 const resetBoard = function () { // can turn this into a function to create scalable board later
 
-  $('.squares').css('backgroundColor', 'lightsteelblue');
+  // $('.squares').css('backgroundColor', 'lightsteelblue');
+  $('.squares').html('')
   winListItem = null
   gameOver = false
   turnCount = 0
@@ -72,7 +75,8 @@ $('.squares').on('click', function () { // this places player number in the corr
     } else {
     setPlayer();
     console.log(gameResult);
-    $(this).css( `backgroundColor`, playerColor )
+    // $(this).css( `backgroundColor`, playerColor )
+    $(this).html(playerMark)
     gameBoard[boxID] = playerMark; // pushes the playerMark( X or O ) into the array
     if (turnCount >= 5) { // minimum number of turns to get a win, so doesn't search til now.
       winCheck(); // runs the win function
@@ -83,29 +87,17 @@ $('.squares').on('click', function () { // this places player number in the corr
 
 const scoreBoard = function () {
 
-  $scoreBoard = $('<div class="scoreBoard">'); // could just make this show an already hidden div
+  // $scoreBoard = $('<div class="scoreBoard">'); // could just make this show an already hidden div
 
-  $scoreBoard.css({
+  // $scoreBoard.css({
+  // }); // end of blob div properties
 
-    position: 'absolute',
-    backgroundColor: `white`,
-    width: 250 + 'px',
-    height: 125 + 'px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: `15%`,
-    backgroundColor: `yellow`,
-    border: `2px solid goldenrod`,
+  // $scoreBoard.html(`Congratulations Player ${player}! \n You won the game playing as ${playerMark}`)
 
-
-  }); // end of blob div properties
-
-  $scoreBoard.html(`the game has finished with a ${gameResult}`)
+  $winName.html(`Congratulations Player ${player}!`)
+  $winText.html(`You won the game playing as ${playerMark}`)
+  $('.scoreBoard').css('visibility', 'visible') // creates the blob
   winCounter();
-
-
-  $('#wrapper').append( $scoreBoard ); // creates the blob
 
 }
 
@@ -116,15 +108,14 @@ const winCounter = function () {
   // $addWin = $('<li>')
   // $addWin.html(`hello`)
   // $addWin.append($(`ul`))
-  $ul.html($ul.html() + `<li>${winListItem}</li>`)
-
+  $ul.html(`<li>${winListItem}</li>` + $ul.html())
 }
 
 $('#startButton').on('click', function () {
-  $scoreBoard.remove()
+  $('.scoreBoard').css('visibility', 'hidden')
   resetBoard()
   $(this).html( 'reset' );
-  $('.squares').css('backgroundColor', 'aqua'); // turn this into a reset gameboard function
+  $('.squares').css('backgroundColor', '#fcfcfc'); // turn this into a reset gameboard function
   console.log(`startGame`)
 }); // end of startbutton onclick
 
@@ -198,7 +189,7 @@ const oldloopWinsArray = function () {
             console.log( `WIN!`)
             return (`winner is player`, oldplayer)
           }
-        // } else {         
+        // } else {
           // return false
         }
       }
