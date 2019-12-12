@@ -2,7 +2,6 @@
 
 <head>
   <title>tic-tac-toe</title>
-  <!-- <link rel="stylesheet" href="css/reset.css"> -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -13,15 +12,15 @@
         <div class="cross" id="c1"></div>
         <div class="cross" id="c2"></div>
       </div>
-      <div id="loadButton">
+      <div id="loadButton">go
       </div>
     </div>
     <div id="nameEntryBox" style="display: none">
         <div id="enterNames">
           <form>
             <label>ENTERNAME</label>
-            <input id="enterPlayer1Name" type="text" placeholder="Player 1"></input>
-            <input id="enterPlayer2Name" type="text" placeholder="Player 2"></input>
+            <input id="enterPlayer1Name" type="text" placeholder="player one"></input>
+            <input id="enterPlayer2Name" type="text" placeholder="player two"></input>
             <input id='submitName' type="button" value="enter"></input>
         </form>
       </div>
@@ -32,25 +31,29 @@
         <div id='selectSymbol1' class="dropdown">
           <button id='dropBtnP1' class="dropbtn"></button>
             <div class="dropdown-content">
-              <div class="p1Symbol" id="p1">spaceship</div>
-              <div class="p1Symbol" id="p2">star</div>
+              <div class="p1Symbol" id="p1">cross</div>
+              <div class="p1Symbol" id="p2">circle</div>
               <div class="p1Symbol" id="p3">pizza</div>
               <div class="p1Symbol" id="p4">heart</div>
               <div class="p1Symbol" id="p5">fish</div>
               <div class="p1Symbol" id="p6">diamond</div>
               <div class="p1Symbol" id="p7">drumstick</div>
-          </div>
+              <div class="p1Symbol" id="p8">spaceship</div>
+              <div class="p1Symbol" id="p9">star</div>
+                        </div>
         </div>
         <div id='selectSymbol2' class="dropdown">
         <button id='dropBtnP2' class="dropbtn"></button>
           <div class="dropdown-content">
-            <div class="p2Symbol" id="t1">spaceship</div>
-            <div class="p2Symbol" id="t2">star</div>
+            <div class="p2Symbol" id="t1">cross</div>
+            <div class="p2Symbol" id="t2">circle</div>
             <div class="p2Symbol" id="t3">pizza</div>
             <div class="p2Symbol" id="t4">heart</div>
             <div class="p2Symbol" id="t5">fish</div>
             <div class="p2Symbol" id="t6">diamond</div>
             <div class="p2Symbol" id="t7">drumstick</div>
+            <div class="p2Symbol" id="t8">spaceship</div>
+            <div class="p2Symbol" id="t9">star</div>
         </div>
       </div>
       </div>
@@ -58,6 +61,13 @@
     </div>
   </div>
   <div id="wrapper" style="display: none">
+    <div id="optionsbox">
+      <div id="options"><img src="images/settings.png">
+      </div>
+      <div id="optionsAppear" style="display: none">
+        <div id="changeNames">change names</div>
+      </div>
+    </div>
       <div id="turnbox">
         <h1 id="turntext"></h1>
       </div>
@@ -81,7 +91,7 @@
         <div class="squares" id="7">  </div>
         <div class="squares" id="8">  </div>
       </div>
-      <div class="scoreBoard"><h3 id="winName">Congratulations!</h3><p id="winText">You won the game with X!</p><p id="drawText"></p><button id="scoreBoardOk">OK!</button></div>
+      <div class="scoreBoard"><h3 id="winName">Congratulations!</h3><p id="winText">You won the game with X!</p><button id="scoreBoardOk">OK</button></div>
     <footer>
       <div id="bottomText">
         <h1 id="headingText">TICTACTOE</h1>  </div>

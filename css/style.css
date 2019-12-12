@@ -9,7 +9,6 @@ body {
 }
 
 #blankscreen {
-  /* display:none; */
   position: absolute;
   align-self: baseline;
   background-color: #e3e3e3;
@@ -24,10 +23,6 @@ body {
   font-family: 'Montserrat', sans-serif;
   position: relative;
   top: 100px;
-}
-
-#backgroundX {
-
 }
 
 #loadBox {
@@ -69,6 +64,11 @@ body {
   border-radius: 50%;
   background-color: black;
   position:absolute;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  display:flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #nameEntryBox {
@@ -131,10 +131,9 @@ input{
   box-shadow: 10px 10px 4px 0px #00000011;
 }
 
-/* FOR DROP BOX */
 .dropbtn {
   min-width: 100px;
-  background-color: #e3e3e3;
+  background-color: lightgrey;
   color: white;
   padding: 16px;
   font-size: 16px;
@@ -150,25 +149,25 @@ input{
   font-family: 'Montserrat', sans-serif;
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
-  /* min-width: 160px; */
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  background-color: whitesmoke;
+  text-align: center;
+  width:100%;
+  box-shadow: 10px 10px 0px 0px #00000011;;
   z-index: 1;
   font-size:14px;
 }
 
 .dropdown-content div {
   color: black;
-  padding: 12px 16px;
   text-decoration: none;
   display: block;
 }
 
-.dropdown-content div:hover {background-color: #ddd;}
+.dropdown-content div:hover {background-color: lightgrey;}
 
 .dropdown:hover .dropdown-content {display: block;}
 
-.dropdown:hover .dropbtn {background-color: #b3b3b3;}
+.dropdown:hover .dropbtn {background-color: pink;}
 
 #symbolOk {
   width: 200px;
@@ -177,30 +176,54 @@ input{
   margin-top: 10px;
 }
 
-.lines {
-  visibility:hidden;
-  position: absolute;
-  border: 0.5px solid red;
-}
-#centerlineV {
-  width: 1px;
-  height: 100%;
-}
-
-#centerlineH {
-  width: 100%;
-  height: 1px;
-}
-
 #wrapper {
-  /* background-color: black; */
   position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f5f5f5;
+  /* background-color: #f5f5f5; */
   width: 100vw;
   height: 100vh;
+}
+
+#optionsbox {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3vh;
+  height: 3vh;
+  background-color: pink;
+}
+
+#options > img {
+  width: 80%;
+}
+
+#optionsAppear {
+  position: absolute;
+  width: 200px;
+  height: 50;
+  background-color: whitesmoke;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 20px;
+  box-shadow: 10px 10px 2px #0000000d;
+}
+
+#changeNames {
+  text-align: center;
+  width: 80%;
+  height: fit-content;
+  background: lightgrey;
+  font-family: 'Montserrat', sans-serif;
+  padding: 5px;
 }
 
 #turnbox {
@@ -240,16 +263,14 @@ header {
   height: 200px;
   width:50px;
   background-color: lightgrey;
+  box-shadow: -10px 10px 2px #0000000d;
 }
 
 #winCounter {
-  /* visibility:hidden; */
-  /* left: 0px; */
   height: 400px;
-  width: 300px;
+  width: max-content;
   display: flex;
   justify-content: center;
-  background-color: #f5f5f5;
   align-items: center;
   flex-flow: column;
 }
@@ -264,9 +285,12 @@ h2 {
 #wins {
   font-family: 'Montserrat', sans-serif;
   background-color: #fcfcfc;
+  margin: 0;
+  padding: 0 20;
   height: 100%;
-  width: 90%;
+  width: 100%;
   overflow: hidden;
+  box-shadow: 10px 10px 2px #0000000d;
 }
 
 li {
@@ -274,21 +298,12 @@ li {
   text-align: center;
 }
 
-/* #content {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: 450px;
-} */
-
 #buttonBox {
   position: absolute;
   right: 0;
   width: 20vw;
   display: flex;
   flex-flow:row-reverse;
-  /* justify-content: center; */
   align-items: center;
   height: 30vh;
 }
@@ -300,73 +315,56 @@ li {
   text-align: right;
   width: 50px;
   background-color: lightgrey;
+  box-shadow: 10px 10px 2px #0000000d;
 }
 
 #gameboard {
+  max-width: 450px;
+  max-height: 450px;
   position: absolute;
-  /* max-width: 600 */
-  width: 450px;
-  height: 450px;
+  width: 40vw;
+  height: 40vw;
   display: grid;
-  grid-template-columns: repeat(3, 150px);
+  grid-template-columns: repeat(3, calc(100%/3));
   box-shadow: 10px 10px 4px 0px #00000011;
 }
 
 #gameboard > div {
-  /* background-color: darkgrey; */
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #fcfcfc;
-  width: 150px;
-  height: 150px;
   border:1px solid grey;
   font-family: 'Fredoka One', sans-serif;
-  font-size: 64px;
 }
 
-/* footer {
+#gameboard > div > img {
   position: absolute;
-  bottom: 0px;
-  display:flex;
-  align-items: center;
-  justify-content: center;
-  height: 5vh;
-  width: 100vw;
-  background-color: #f5f5f5;
-} */
+}
 
 footer {
   display: flex;
   align-items: center;
   width: 100vw;
   height: 10vh;
-  background-color: magenta;
+  background-color: pink;
   bottom: 0;
   position: absolute;
   overflow-y: hidden;
-  /* justify-content: center; */
 }
 
 #headingText {
-  /* position: absolute; */
-  /* bottom: -24px; */
-  /* height: fit-content; */
-  /* font-style: strong; */
-  /* left: 0; */
   margin: 20px;
   font-family: 'Montserrat', sans-serif;
   font-size: 4vh;
   width: fit-content;
-  /* line-height: 90%; */
-  letter-spacing: 8vw;
-  font-size: 3vw;
+  letter-spacing: 9vw;
+  font-size: 2vw;
 }
 
 .scoreBoard {
   visibility: hidden;
   display: flex;
-  /* display: none; */
   font-family: 'Montserrat', sans-serif;
   flex-flow:column;
   text-align: center;
@@ -375,9 +373,7 @@ footer {
   height: 250px;
   align-items: center;
   justify-content: center;
-  /* border-radius: 15%; */
   background-color: white;
-  /* border: 2px solid darkgrey; */
   box-shadow: 10px 10px 2px #0000000d;
 }
 
@@ -388,7 +384,9 @@ h3 {
 }
 
 #scoreBoardOk {
-  width: 50px;
-  height: 20px;
+  width: 200px;
+  height: 40px;
   background-color: lightgrey;
+  border: none;
+  margin: 2%;
 }
