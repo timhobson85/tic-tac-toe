@@ -8,6 +8,7 @@
 <body>
   <div id="blankscreen">
     <div id="loadBox">
+      <div id="loadText">tictactoe</div>
       <div id="cross">
         <div class="cross" id="c1"></div>
         <div class="cross" id="c2"></div>
@@ -56,20 +57,19 @@
       <input id="symbolOk" type="button" value="enter"></input>
     </div>
   </div>
-  <div class="lines" id="centerlineV"></div>
-  <div class="lines" id="centerlineH"></div>
   <div id="wrapper" style="display: none">
-    <!-- <h1 id="headingText">TICTACTOE</h1> -->
-    <!-- <header>
-      <nav>
-        <div></div>
-      </nav>
-    </header> -->
-    <div id="winCounter">
-      <h2>SCOREBOARD</h2>
-      <ul id="wins"></ul>
-    </div>
-      <div id="resetButton">reset</div>
+      <div id="turnbox">
+        <h1 id="turntext"></h1>
+      </div>
+      <div id="winbox">
+        <div id="winHover">SCOREBOARD</div>
+        <div id="winCounter" style="display: none">
+            <ul id="wins"></ul>
+        </div>
+      </div>
+      <div id="buttonBox">
+        <div id="resetButton">RESET</div>
+      </div>
       <div id="gameboard">
         <div class="squares" id="0">  </div>
         <div class="squares" id="1">  </div>
@@ -84,8 +84,7 @@
       <div class="scoreBoard"><h3 id="winName">Congratulations!</h3><p id="winText">You won the game with X!</p><p id="drawText"></p><button id="scoreBoardOk">OK!</button></div>
     <footer>
       <div id="bottomText">
-        <h1 id="headingText">TICTACTOE</h1>
-      </div>
+        <h1 id="headingText">TICTACTOE</h1>  </div>
     </footer>
   </div>
   <script type="text/javascript" src='js/jquery.js'></script>
