@@ -1,0 +1,79 @@
+<!-- GOING TO COMPLETELY REDO LAYOUT -->
+<html>
+
+<head>
+  <title>tic-tac-toe</title>
+  <!-- <link rel="stylesheet" href="css/reset.css"> -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- <div id="blankscreen">
+    <div id="loadBox">
+      <div id="cross">
+        <div class="cross" id="c1"></div>
+        <div class="cross" id="c2"></div>
+      </div>
+      <div id="loadButton">
+      </div>
+    </div>
+  </div> -->
+  <div class="lines" id="centerlineV"></div>
+  <div class="lines" id="centerlineH"></div>
+  <div id="wrapper">
+    <header>
+      <nav>
+        <h1 id="headingText">TICTACTOE X O</h1>
+        <div></div>
+      </nav>
+    </header>
+    <div id="content">
+      <div id="leftSide">
+        <div id="winCounter">
+          <h2>SCOREBOARD</h6>
+            <ul id="wins"></ul>
+          </div>
+        </div>
+      <div id="gameboard">
+        <div class="squares rightBorderLine bottomBorderLine" id="0">  </div>
+        <div class="squares rightBorderLine bottomBorderLine" id="1">  </div>
+        <div class="squares bottomBorderLine" id="2">  </div>
+        <div class="squares rightBorderLine bottomBorderLine" id="3">  </div>
+        <div class="squares rightBorderLine bottomBorderLine" id="4">  </div>
+        <div class="squares bottomBorderLine" id="5">  </div>
+        <div class="squares rightBorderLine" id="6">  </div>
+        <div class="squares rightBorderLine" id="7">  </div>
+        <div class="squares" id="8">  </div>
+      </div>
+      <div id="rightSide">
+        <div id="pickMark">
+          <div class="dropdown">
+            <button class="dropbtn">choosesymbol</button>
+              <div class="dropdown-content">
+                <div id="1">pizza</div>
+                <div id="2"></div>
+                <div id="3"></div>
+            </div>
+          </div>
+        </div>
+        <div id="buttonBox">
+          <div id="getName"><div id="enterNames"><form>
+          <label>ENTERNAME</label>
+          <input id="enterPlayer1Name" type="text" placeholder="Player 1"></input>
+          <input id="enterPlayer2Name" type="text" placeholder="Player 2"></input>
+          <input id='submitName' type="button" value="enter"></input>
+        </form></div></div>
+          <div id="resetButton">reset</div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div>
+
+      </div>
+    </footer>
+  </div>
+  <div class="scoreBoard"><h3 id="winName">Congratulations!</h3><p id="winText">You won the game with X!</p><p id="drawText"></p><button id="scoreBoardOk">OK!</button></div>
+  <script type="text/javascript" src='js/jquery.js'></script>
+  <script type="text/javascript" src='js/main.js'></script>
+</body>
+</html>

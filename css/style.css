@@ -1,33 +1,194 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat|Fredoka+One|Orbitron&display=swap');
-/* font-family: 'Montserrat', sans-serif; */
-
-body {
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#gameboard > div {
-  font-family: 'Fredoka One', sans-serif;
-  font-size: 175px;
-}
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Fredoka+One&display=swap');
 
 * {
   box-sizing: border-box;
 }
 
-h2 {
+body {
+  margin: 0;
+}
+
+#blankscreen {
+  position: absolute;
+  align-self: baseline;
+  background-color: #e3e3e3;
+  width:100vw;
+  height:100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#loadBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: whitesmoke;
+  width: 500px;
+  height: 300px;
+  box-shadow: 10px 10px 4px 0px #00000011;
+}
+
+#cross {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+#c1, #c2 {
+  background-color: black;
+  height: 50px;
+  width: 10px;
+  position: absolute;
+}
+
+#c1 {
+  transform: rotate(-45deg);
+}
+
+#c2 {
+  transform: rotate(45deg);
+}
+
+#loadButton {
+  width: 53px;
+  height: 53px;
+  border-radius: 50%;
+  background-color: black;
+  position:absolute;
+}
+
+#nameEntryBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: whitesmoke;
+  width: 500px;
+  height: 300px;
+  box-shadow: 10px 10px 4px 0px #00000011;
+}
+
+#enterNames {
+  text-align:center;
   font-family: 'Montserrat', sans-serif;
+}
+
+form {
+  margin: 0;
+  width: min-content;
+
+}
+
+label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 50px;
+}
+
+input {
+  font-family: 'Montserrat', sans-serif;
+}
+input{
+   text-align:center;
+}
+
+#enterPlayer1Name {
   font-size: 20px;
-  height: fit-content;
-  width: fit-content;
+  margin: 10px;
+}
+
+#enterPlayer2Name {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+#submitName {
+  width: 200px;
+  border: none;
+  height: 50px;
+}
+
+#pickMark {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  background-color: whitesmoke;
+  width: 500px;
+  height: 300px;
+  box-shadow: 10px 10px 4px 0px #00000011;
+}
+
+/* FOR DROP BOX */
+.dropbtn {
+  min-width: 100px;
+  background-color: #e3e3e3;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  font-family: 'Montserrat', sans-serif;
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  /* min-width: 160px; */
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  font-size:14px;
+}
+
+.dropdown-content div {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content div:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #b3b3b3;}
+
+#symbolOk {
+  width: 200px;
+  border: none;
+  height: 50px;
+  margin-top: 10px;
 }
 
 .lines {
   visibility:hidden;
   position: absolute;
   border: 0.5px solid red;
+}
+#centerlineV {
+  width: 1px;
+  height: 100%;
+}
+
+#centerlineH {
+  width: 100%;
+  height: 1px;
+}
+
+#wrapper {
+  /* background-color: black; */
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
+  width: 100vw;
+  height: 100vh;
 }
 
 header {
@@ -39,19 +200,39 @@ header {
   background-color: #f5f5f5;
 }
 
-#centerlineV {
-  width: 1px;
-  height: 100%;
+#headingText {
+  /* position: absolute; */
+  /* bottom: -24px; */
+  /* height: fit-content; */
+  /* font-style: strong; */
+  /* left: 0; */
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 100px;
+  width: fit-content;
+  line-height: 90%;
+  letter-spacing: 67.5px;
+  font-size: 14vh;
+
 }
 
-#centerlineH {
-  width: 100%;
-  height: 1px;
+#winCounter {
+  position: absolute;
+  left: 0px;
+  height: 400px;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  background-color: #f5f5f5;
+  align-items: center;
+  flex-flow: column;
 }
 
-li {
-  list-style-type: none;
-  text-align: center;
+h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  height: fit-content;
+  width: fit-content;
 }
 
 #wins {
@@ -64,51 +245,40 @@ li {
   overflow: hidden;
 }
 
-#winCounter {
-  height: 400px;
-  width: 300px;
-  display: flex;
-  justify-content: center;
-  background-color: #f5f5f5;
-  align-items: center;
-  flex-flow: column;
+li {
+  list-style-type: none;
+  text-align: center;
 }
 
-#buttonBox {
-  height: 400px;
-  width: 300px;
+/* #content {
+  position: absolute;
   display: flex;
   justify-content: center;
-  background-color: #f5f5f5;
-  align-items: center;
-  flex-flow: column;
-}
+  width: 100%;
+  height: 450px;
+} */
 
-#wrapper {
-  /* background-color: black; */
+#resetButton {
+  position: absolute;
   display: flex;
   align-items: center;
-  flex-flow: column;
-  justify-content: space-between;
-  background-color: #f5f5f5;
-  width: 100vw;
-  height: 100vh;
+  justify-content: center;
+  width: 75px;
+  height: 75px  ;
+  background-color: lightgrey;
+  border-radius: 50%;
+  bottom: 5vw;
+  right: 5vw;
+  font-family: 'Montserrat', sans-serif;
 }
 
 #gameboard {
+  position: absolute;
   /* max-width: 600 */
   width: 450px;
   height: 450px;
   display: grid;
   grid-template-columns: repeat(3, 150px);
-}
-
-.rightBorderLine {
-  border-right: 1px solid grey;
-}
-
-.bottomBorderLine {
-  border-bottom: 1px solid grey;
 }
 
 #gameboard > div {
@@ -119,58 +289,32 @@ li {
   background-color: #fcfcfc;
   width: 150px;
   height: 150px;
+  border:1px solid grey;
+  font-family: 'Fredoka One', sans-serif;
+  font-size: 64px;
 }
 
-.squares {
-  /* border: 1px solid magenta;   */
-}
-
-#content {
-  /* background-color: lightpink; */
-  display: flex;
-  justify-content: space-space-between;
-  align-items: center;
-  width: 100%;
-  height: 450px;
-}
-
-#resetButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100px;
-  height: 50px;
-  background-color: lightgrey;
-  border-radius: 30%;
-  border: 2px solid darkgrey;
-  place-self: center;
-
-}
-
-#leftSide, #rightSide {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  background-color: #e3e3e3;
-}
-
-#headingText {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 100px;
-  font-style: strong;
-  height: fit-content;
-  width: fit-content;
-}
-
-footer {
+/* footer {
+  position: absolute;
+  bottom: 0px;
   display:flex;
   align-items: center;
   justify-content: center;
   height: 5vh;
   width: 100vw;
   background-color: #f5f5f5;
+} */
+
+footer {
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 10vh;
+  background-color: magenta;
+  bottom: 0;
+  position: absolute;
+  overflow-y: hidden;
+  justify-content: center;
 }
 
 .scoreBoard {
@@ -197,126 +341,8 @@ h3 {
   margin: 25px;
 }
 
-winText {
-  /* margin: 0; */
-}
-
 #scoreBoardOk {
   width: 50px;
   height: 20px;
   background-color: lightgrey;
 }
-
-#getName {
-  display:flex;
-  flex-flow:column;
-  height:min-contents;
-  background-color:lightgrey;
-  inline-size:min-content;
-}
-
-#enterNames {
-  text-align:center;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 15px;
-  margin: 0;
-}
-
-#goButton {
-  width:100%;
-}
-
-form {
-  margin: 0;
-}
-
-#loadBox {
-  position:absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: whitesmoke;
-  width: 500px;
-  height: 300px;
-  box-shadow: 10px 10px 4px 0px #00000011;
-}
-
-#loadButton {
-  width: 53px;
-  height: 53px;
-  border-radius: 50%;
-  background-color: black;
-  position:absolute;
-}
-
-/* loadButton:hover {
-  display:none
-}; */
-
-#blankscreen {
-  background-color: #e3e3e3;
-  position:absolute;
-  width:100vw;
-  height:100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#cross {
-  width: 50px;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-}
-
-#c1, #c2 {
-  background-color: black;
-  height: 50px;
-  width: 10px;
-  position: absolute;
-
-}
-#c1 {
-  transform: rotate(-45deg);
-
-}
-#c2 {
-  transform: rotate(45deg);
-}
-
-/* FOR DROP BOX */
-.dropbtn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content div {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-content div:hover {background-color: #ddd;}
-
-.dropdown:hover .dropdown-content {display: block;}
-
-.dropdown:hover .dropbtn {background-color: #3e8e41;}

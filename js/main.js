@@ -7,6 +7,8 @@ let gameOver = null
 let $addWin = null
 let winListItem = null
 let playerIMG = null
+let player1IMG = null
+let player2IMG = null
 let player1Name = null
 let player2Name = null
 const $ul = $('ul#wins')
@@ -16,18 +18,42 @@ const $scoreBoard = $('.scoreBoard')
 
 $('#loadButton').on('click', function () {
   $(this).fadeOut(function () {
-      $('#blankscreen').delay(1000).fadeOut();
+      $('#loadBox').fadeOut();
+      $('#nameEntryBox').delay(500).fadeIn()
   })
 })
 
 $('#submitName').on('click', function () { // create a check for no input?
   player1Name = ( $('#enterPlayer1Name').val() );
   player2Name = ( $('#enterPlayer2Name').val() );
+  $('#dropBtnP1').html( player1Name );
+  $('#dropBtnP2').html( player2Name );
   console.log(player1Name);
   console.log(player2Name);
-  $('#getName').hide()
+  $('#nameEntryBox').fadeOut()
+  $('#pickMark').delay(500).fadeIn()
 } );
 
+$('.p2Symbol').on('click', function () {
+  p2S = $(this).html();
+  player2IMG = p2S
+  console.log( player2IMG );
+  $('#dropBtnP2').html( p2S )
+  $('.p2Symbol').hide()
+})
+
+$('.p1Symbol').on('click', function () {
+  p1S = $(this).html();
+  player1IMG = p1S
+  console.log( player1IMG );
+  $('#dropBtnP1').html( p1S )
+  $('.p1Symbol').hide()
+})
+
+$('#symbolOk').on('click', function () { // create if to check picked symbols
+  $('#pickMark').fadeOut()
+  $('#wrapper').delay(500).fadeIn()
+})
 
 
 
@@ -43,11 +69,11 @@ const resetBoard = function () {
 const setPlayer= function () { // use object for players and change this
   if (turnCount % 2 === 0) {
     player = player1Name
+    playerIMG = player1IMG
     playerMark = `X`
-    playerIMG = "X"
   } else {
     player = player2Name
-    playerIMG = "<img src= images/1.png>"
+    playerIMG = player2IMG
     playerMark = `O`
   }
   turnCount++
@@ -64,7 +90,7 @@ const checkBoxUsed = function () {
 
 const endGame = function () {
   if (gameResult === `win`) {
-    winListItem = `${player}-${gameResult}-${playerMark}`
+    winListItem = `${player}-${gameResult}-${playerIMG}`
     scoreBoard()
     return gameOver = true
   } else if (gameResult === `draw`) {
@@ -77,7 +103,7 @@ const endGame = function () {
 }
 
 const placeMark = function () {
-  $(`#${boxID}`).html(`${playerIMG}`)
+  $(`#${boxID}`).html(`<img src="images/${playerIMG}.png">`)
   gameBoard[boxID] = playerMark; // pushes the playerMark( X or O ) into the array
 }
 
@@ -98,7 +124,7 @@ $('.squares').on('click', function () { // this places player number in the corr
 
 const scoreBoard = function () {
   $winName.html(`Congratulations ${player}!`)
-  $winText.html(`You won the game playing as ${playerMark}`)
+  $winText.html(`You won the game playing as ${playerIMG}`)
   $('.scoreBoard').css('visibility', 'visible')
   $('#scoreBoardOk').on('click', function () {
     $('.scoreBoard').css('visibility', 'hidden')
