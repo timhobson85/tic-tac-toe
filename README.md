@@ -27,4 +27,6 @@ not great mobile scaling
 
 https://timhobson85.github.io/tic-tac-toe/
 
+
+![ScreenShot](https://raw.githubusercontent.com/timhobson85/tic-tac-toe/master/images/screenshot.png)
 screenshot - (/images/screenshot.png)
