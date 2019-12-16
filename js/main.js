@@ -37,10 +37,6 @@ const tictactoe = {
 
   ], // end of winConditionsArray
 
-  // playerInfo : {
-  //   player1Name: 'Tim', player1IMG: 'spaceship', player2Name: 'Dave', player2IMG: 'pizza'
-  // }, // testing
-
   playerInfo : {
     player1Name: null, player1IMG: null, player2Name: null, player2IMG: null
   },
@@ -117,7 +113,7 @@ const tictactoe = {
 
   winCounter : function () {
     this.gameState.$ul.html(`<li>${this.gameState.winListItem}</li>` + this.gameState.$ul.html())
-    $('#winCounter').show().delay(2500).fadeOut(2000  )
+    $('#winCounter').show().delay(2500).fadeOut(2000)
   },
 
   winCheck : function () {
@@ -129,7 +125,8 @@ const tictactoe = {
         if ( this.gameBoard[solve[0]] && ((this.gameBoard[solve[0]] === this.gameBoard[solve[1]]) && (this.gameBoard[solve[1]] === this.gameBoard[solve[2]]))) {
           return this.gameState.gameResult = `win`
         }
-      } if (this.gameState.turnCount === 9) {
+      }
+      if (this.gameState.turnCount === 9) {
         return this.gameState.gameResult = `draw`
       }
     }
@@ -206,35 +203,3 @@ $('#resetButton').on('click', function () {
   $('.scoreBoard').css('visibility', 'hidden')
   tictactoe.resetBoard()
 }); // end of resetbutton onclick
-
-const deepBrown = {
-
-  randomValue : function( max ){
-    return Math.floor ( Math.random() * max );
-  }, // end of randomNumber
-
-  compareSolve : function () {
-    //search 3 solve conditions
-    for (var i = 0; i < winConditionsArray.length; i++) {
-      var solve = winConditionsArray[i]
-    } for (var j = 0; j < solve.length; j++) {
-        console.log(solve[j])
-        if (solve[j] === true) {
-          //twice then place in third spot in that array
-        }
-
-      }
-  },
-
-
-  thinking : function () {
-    if (this.gameState.turnCount === 1) {
-      //place random
-    }
-    for (var i = 0; i < gameBoard.length; i++) {
-      gameBoard[i]
-      // loop for empty spaces
-    }
-  },//end of makeMove
-
-}// end of deepBrown

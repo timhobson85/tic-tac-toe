@@ -3,80 +3,28 @@ created 09/12/19
 
 Seconds to learn, minutes to master!
 
----Project #0: The Game---
+created during week 3 of SDI 35
+created using HTML, CSS, JavaScript and jQuery.
+built from scratch using everything we learned in the first two weeks of our course.
+a lot of time was spent achieving the layout I was after and working with CSS and jQuery to create a more dynamic and reactive website.
 
----Overview
+favourite parts -
+the entire project. getting to learn how all the prior learning worked together to create a single cohesive game was very enjoyable.
 
----Let's start out with something fun - a game!
-We'll be making Tic Tac Toe, a game that takes seconds to learn but minutes to master! Everyone will get a chance to be creative, and work through some really tough programming challenges to get your feet wet in the world of web development.
-You will be working individually for this project, but we'll be guiding you along the process and helping as you go. Show us what you've got!
+pain points -
+spending too much time on ideas at the start instead of just getting into it and getting it started. a good lesson learned for next time.
 
----What You've Learned
-By the time you submit this project, you will have covered new ground in many of the big themes of the course:
--Command Line: Practice interacting with the computer and navigating the filesystem from the command line.
--Source Control: Manage and interact with a git repository to store changes to code.
--Programming Fundamentals: Work with array, objects, event handlers & callbacks, while learning how to strategically solve problems and resolve errors.
--Web Fundamentals: Learn how communication happens over the internet, and how to structure, style, and animate documents within a browser. Also learn how to respond to actions taken by your users and the data they input into the browser.
--Browser Applications: Dive into CSS and learn how to use libraries and frameworks to get lots of style for free.
--Deployment: Host a static web site in a managed hosting environment.
--Products and Teams: Document your code and your code repository so others understand what you've built.
+wishlist -
+themes (dark mode, different colours)
+AI (dumb and unbeatable)
+local storage
 
----Big Goals
-Build a web application from scratch, without a starter codebase
-Use your programming skills to map out the game logic for a simple game like Tic Tac Toe
-Separate HTML, CSS, and JavaScript files in your application
-Build an application to a spec that someone else gives you
-Build a dynamic game that allows two players to compete
-Craft a README.md file that explains your app to the world
+known bugs -
+can be same symbol
+no input verification for names
+no 'first move' prompt for player
+not great mobile scaling
 
----Technical Requirements
-Your app must:
--Render a game board in the browser
--Switch turns between X and O (or whichever markers you select); your game should prevent users from playing a turn into a square that is already occupied
--Visually display which side won if a player gets three in a row or show a draw/"cat’s game" if neither wins
--Include separate HTML / CSS / JavaScript files
--Stick with KISS (Keep It Simple Stupid) and DRY (Don't Repeat Yourself) principles
--Use Javascript with jQuery for DOM manipulation
--Deploy your game online, where the rest of the world can access it
--Use semantic markup for HTML and CSS (adhere to best practices)
+https://timhobson85.github.io/tic-tac-toe/
 
----Bonus
-These are for extra credit! Don't focus on these until you've hit the core requirements.
--Keep track of multiple game rounds with a win counter
--Allow players to customize their tokens (X, O, name, picture, etc)
--Get inventive with your styling, e.g. use hover effects or animations to spiff things up
--Use LocalStorage to persist data locally to allow games to continue after page refresh or loss of internet connectivity
--Support custom board sizes: default is 3x3 but you could allow users to choose a larger board
--Support networked multiplayer: https://www.firebase.com/ has a nice quickstart guide
--Create an AI opponent: teach Javascript to play an unbeatable game against you
--Start by implementing a few simple rules which can be easily checked and are always good moves, such as "always take the center square if it's available" - you can google these rules for yourself
--You can build in as many AI player rules as you like but you'll quickly end up with a longwinded list of if-else-if statements. To make a truly unbeatable AI opponent you'll need to look into implementing an algorithm like MiniMax(https://en.wikipedia.org/wiki/Minimax) - for advanced/bold students only!
--Start again by implementing a totally different game: Try Checkers, or Battleships.... or Chess (if you're feeling very brave)
--Make a Vue.js(https://vuejs.org/v2/guide/) version of your game, instead of jQuery, and compare the two...
-
----Necessary Deliverables
--A working game, built by you, hosted somewhere on the internet
--A link to your hosted working game in the URL section of your Github repo
--A git repository hosted on Github, with a link to your hosted game, and frequent commits dating back to the very beginning of the project
--A readme.md file with explanations of the technologies used, the approach taken, installation instructions, unsolved problems, etc.
--On Friday of project week everyone individually presents their project to the class, with an overview of the app and a brief code tour of the highlights.
-
----Suggested Ways to Get Started
--Break the project down into different components (data, presentation, views, style, DOM manipulation) and brainstorm each component individually. Use whiteboards!
--Use your Development Tools (console.log, inspector, alert statements, etc) to debug and solve problems
--Work through the lessons in class, ask questions and come to office hours when you need to. Think about adding relevant code to your Tic Tac Toe game each night, instead of, you know... procrastinating.
--Commit early, commit often. Don’t be afraid to break something because you can always go back in time to a previous version.
--Check out Tutorial and Documentation resources (jQuery tutorial) at home to better understand what you’ll be getting into.
--Don’t be afraid to write code that you know you will have to remove later. Create temporary elements (buttons, links, etc) that trigger events if real data is not available. For example, if you’re trying to figure out how to change some text when the game is over but you haven’t solved the win/lose game logic, you can create a button to simulate that until then.
-
----Useful Resources
--MDN Javascript Docs (a great reference for all things Vanilla Javascript) (https://developer.mozilla.org/en-US/docs/Web/JavaScript)
--jQuery Docs (http://api.jquery.com/)
--Github Pages (for hosting your game) (https://pages.github.com/)
-
----If You Finish Early
-We invite you to work on any or all of the following:
--A more advanced game (Memory? Battleship? Connect Four?)
--A Vue.js version of the game (in place of the jQuery version)
--Your Github portfolio site
--Any other front-end project that interests you
+screenshot - (/images/screenshot.png)
