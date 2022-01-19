@@ -24,7 +24,7 @@ themes (dark mode, different colours), AI (dumb and unbeatable), local storage
 
 known bugs - can be same symbol, no input verification for names, no 'first move' prompt for player, not great mobile scaling
 
-https://timhobson85.github.io/tic-tac-toe/
+https://timmyhobson85.github.io/tic-tac-toe/
 
 
 ![ScreenShot](https://raw.githubusercontent.com/timhobson85/tic-tac-toe/master/images/screenshot.png)
